@@ -20,9 +20,28 @@ function getEntry() {
   });
   return entryMap;
 }
+function getHtmlArray(entryMap) {
+  let htmlArray = [];
+  Object.keys(entryMap).forEach(key => {
+    let fullPathName = path.resolve(pageDir, key);
+    let fileName = path.resolve(fullPathName, key + ".html");
+    console.log(key);
+    if (fs.existsSync(fileName)) {
+      htmlArray.push(
+        new HtmlWebpackPlugin({
+          fileName: key + ".html",
+          template: fileName,
+          chunks: [key], // 引入的[key].js？
+          title: key
+        })
+      );
+    }
+  });
+  return htmlArray;
+}
 
 const entryMap = getEntry();
-console.log(entryMap);
+const htmlArray = getHtmlArray(entryMap);
 
 module.exports = {
   mode: "development",
@@ -56,12 +75,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "index"
-    }),
-    new CleanWebpackPlugin()
-  ],
+  plugins: [...htmlArray, new CleanWebpackPlugin()],
   resolve: {
     mainFiles: ["index"],
     extensions: [".js", ".jsx"]
