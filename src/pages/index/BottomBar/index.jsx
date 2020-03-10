@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import MyIcon from "../../../components/MyIcon";
+import MyIcon from "@/components/MyIcon";
 
 import "./index.scss";
 

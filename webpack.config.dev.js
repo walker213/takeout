@@ -78,6 +78,9 @@ module.exports = {
   plugins: [...htmlArray, new CleanWebpackPlugin()],
   resolve: {
     mainFiles: ["index"],
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      "@": path.resolve(__dirname, "./src")
+    }
   }
 };
