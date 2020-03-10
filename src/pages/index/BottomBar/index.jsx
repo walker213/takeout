@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import MyIcon from "../../../components/MyIcon";
+
+import "./index.scss";
 
 /*
  * @constructor <BottomBar>
@@ -15,9 +18,11 @@ export default class index extends Component {
   }
   renderItems() {
     let tabs = ["首页", "订单", "我的"];
-    return tabs.map((item, index) => (
+    return tabs.map(item => (
       <div key={item} className="btn-item">
-        <div className="tab-icon"></div>
+        <div className="tab-icon">
+          <MyIcon type="icon-fenxiang" />
+        </div>
         <div className="btn-name">{item}</div>
       </div>
     ));
