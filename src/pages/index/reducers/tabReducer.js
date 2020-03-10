@@ -1,11 +1,12 @@
-import { ADD_TODO } from "../actions/types";
-
-const initState = { num: 0 };
+import { SWITCH_TAB } from "../actions/types";
+import config from "@/config";
+const { bottomTabs } = config;
+const initState = { currentTab: bottomTabs[0].key };
 
 const tabReducer = (state = initState, action) => {
   switch (action.type) {
-    case ADD_TODO:
-      return { num: state.num + action.num };
+    case SWITCH_TAB:
+      return { currentTab: action.key };
       break;
     default:
       return state;

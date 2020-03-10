@@ -1,0 +1,31 @@
+.bottom-bar {
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid #b6b6b6;
+	background-color: rgba(246, 246, 246, 0.95);
+
+	.tab-item {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 11px;
+		color: #999;
+
+		&.active {
+			color: #000;
+
+			.tab-icon {
+				color: rgb(252, 198, 23);
+			}
+		}
+
+		.tab-icon {
+			font-size: 24px;
+		}
+	}
+}

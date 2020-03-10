@@ -1,3 +1,3 @@
-import { ADD_TODO } from "./types";
+import { SWITCH_TAB } from "./types";
 
-export const addTodo = num => ({ type: ADD_TODO, num });
+export const switchTab = key => ({ type: SWITCH_TAB, key });
