@@ -11,15 +11,19 @@ const { bottomTabs } = config;
  * @constructor <BottomBar>
  * @description 首页底部tab栏
  */
-class BottomBar extends Component {
+
+@connect(state => ({
+  currentTab: state.tabReducer.currentTab
+}))
+export default class BottomBar extends Component {
   constructor(props) {
     super(props);
   }
-  changeTab(key) {
+  changeTab = key => {
     const { currentTab, dispatch } = this.props;
     if (key === currentTab) return;
     dispatch(switchTab(key));
-  }
+  };
   renderItems() {
     return bottomTabs.map(item => {
       const { currentTab } = this.props;
@@ -40,7 +44,3 @@ class BottomBar extends Component {
     return <div className="bottom-bar">{this.renderItems()}</div>;
   }
 }
-
-export default connect(state => ({
-  currentTab: state.tabReducer.currentTab
-}))(BottomBar);
