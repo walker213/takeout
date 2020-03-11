@@ -55,7 +55,17 @@ module.exports = {
       { test: /\.css$/, use: ["style-loader", "css-loader"], include: srcRoot },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: path.resolve(srcRoot, "./helper/index.scss")
+            }
+          }
+        ],
         include: srcRoot
       },
       {

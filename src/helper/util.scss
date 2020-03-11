@@ -1,0 +1,4 @@
+@function px2rem($px) {
+	$rem: 37.5px; //以iphone6设计稿为准，自定义rem大小
+	@return ($px/$rem)+rem;
+}
