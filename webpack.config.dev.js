@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -85,12 +86,20 @@ module.exports = {
       }
     ]
   },
-  plugins: [...htmlArray, new CleanWebpackPlugin()],
+  plugins: [
+    ...htmlArray,
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   resolve: {
     mainFiles: ["index"],
     extensions: [".js", ".jsx"],
     alias: {
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "./src") // 设置路径别名，同时要设置jsconfig.json，vscode路径提醒才会生效
     }
+  },
+  devServer: {
+    contentBase: distPath,
+    hot: true
   }
 };

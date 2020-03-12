@@ -1,3 +1,4 @@
+import { hot } from "react-hot-loader/root";
 import React, { Component } from "react";
 import BottomBar from "../BottomBar";
 
@@ -11,4 +12,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default hot(Main);
