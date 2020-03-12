@@ -15,7 +15,7 @@ const { bottomTabs } = config;
 @connect(state => ({
   currentTab: state.tabReducer.currentTab
 }))
-export default class BottomBar extends Component {
+class BottomBar extends Component {
   constructor(props) {
     super(props);
   }
@@ -44,3 +44,5 @@ export default class BottomBar extends Component {
     return <div className="bottom-bar">{this.renderItems()}</div>;
   }
 }
+
+export default BottomBar;

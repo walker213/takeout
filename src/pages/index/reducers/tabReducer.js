@@ -7,10 +7,8 @@ const tabReducer = (state = initState, action) => {
   switch (action.type) {
     case SWITCH_TAB:
       return { currentTab: action.key };
-      break;
     default:
       return state;
-      break;
   }
 };
 
