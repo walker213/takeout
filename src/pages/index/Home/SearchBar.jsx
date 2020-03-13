@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./SearchBar.scss";
 import MyIcon from "@/components/MyIcon";
+import "./SearchBar.scss";
 
 /*
  * @construcotr <SearchBar />

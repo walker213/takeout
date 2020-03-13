@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import Category from "./Category";
 
 /*
  * @construcotr <Home />
@@ -15,6 +16,7 @@ export default class Home extends Component {
     return (
       <div>
         <Header />
+        <Category />
       </div>
     );
   }

@@ -1,0 +1,22 @@
+$iconSize: px2rem(56px);
+
+.category {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 14px;
+  .category-item {
+    width: 25%;
+    padding: 5%;
+    text-align: center;
+    .category-icon {
+      width: $iconSize;
+      height: $iconSize;
+      margin-bottom: px2rem(5px);
+      line-height: $iconSize;
+      border-radius: 50%;
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+}
