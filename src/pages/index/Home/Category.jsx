@@ -1,24 +1,30 @@
 import React, { Component } from "react";
 import MyIcon from "@/components/MyIcon";
-import config from "@/config";
+import { connect } from "react-redux";
+import { fetchCategoryData } from "../actions/categoryAction";
 import "./Category.scss";
-
-const { category } = config
 
 /*
  * @construcotr <Caategory />
  * @description 类别
  */
 
-export default class Category extends Component {
+@connect(state => ({
+  categoryData: state.categoryReducer.categoryData
+}))
+class Category extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchCategoryData());
   }
 
   render() {
     return (
       <div className="category">
-        {category.map(item => (
+        {this.props.categoryData.map(item => (
           <div className="category-item" key={item.name}>
             <div
               className="category-icon"
@@ -33,3 +39,5 @@ export default class Category extends Component {
     );
   }
 }
+
+export default Category;

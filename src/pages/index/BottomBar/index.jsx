@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import MyIcon from "@/components/MyIcon";
 import config from "@/config";
 import "./index.scss";
-import { switchTab } from "../actions/tabActions";
+import { switchTab } from "../actions/tabAction";
 
 const { bottomTabs } = config;
 
