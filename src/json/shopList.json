@@ -1,0 +1,126 @@
+[
+	{
+		"name": "郑记甜品",
+		"shopTag": 0,
+		"point": 4.5,
+		"count": 1000,
+		"time": 30,
+		"distance": 578,
+		"cost": 20,
+		"isZhuanSong": true,
+		"promotion": [
+			{
+				"type": "ling",
+				"text": "有机会领取商家代金券"
+			},
+			{
+				"type": "fan",
+				"text": "实际支付10元返10元商家代金券"
+			},
+			{
+				"type": "piao",
+				"text": "本店支持开发票，开票金额10元起"
+			}
+		]
+	},
+	{
+		"name": "郑记烧烤",
+		"shopTag": 1,
+		"point": 4.8,
+		"count": 1111,
+		"time": 25,
+		"distance": 188,
+		"cost": 30,
+		"isZhuanSong": true,
+		"promotion": [
+			{
+				"type": "ling",
+				"text": "有机会领取商家代金券"
+			},
+			{
+				"type": "fan",
+				"text": "实际支付30元返10元商家代金券"
+			}
+		]
+	},
+	{
+		"name": "郑记烤鱼",
+		"shopTag": 1,
+		"point": 3.8,
+		"count": 111,
+		"time": 45,
+		"distance": 1588,
+		"cost": 50,
+		"isZhuanSong": false,
+		"promotion": [
+			{
+				"type": "fan",
+				"text": "实际支付50元返10元商家代金券"
+			}
+		]
+	},
+	{
+		"name": "郑记海鲜",
+		"shopTag": 2,
+		"point": 4.2,
+		"count": 1000,
+		"time": 50,
+		"distance": 2578,
+		"cost": 35,
+		"isZhuanSong": true,
+		"promotion": [
+			{
+				"type": "piao",
+				"text": "本店支持开发票，开票金额50元起"
+			}
+		]
+	},
+	{
+		"name": "郑记蛋糕",
+		"shopTag": 0,
+		"point": 4.5,
+		"count": 1000,
+		"time": 30,
+		"distance": 578,
+		"cost": 20,
+		"isZhuanSong": true,
+		"promotion": [
+			{
+				"type": "ling",
+				"text": "有机会领取商家代金券"
+			},
+			{
+				"type": "fan",
+				"text": "实际支付10元返10元商家代金券"
+			},
+			{
+				"type": "piao",
+				"text": "本店支持开发票，开票金额10元起"
+			}
+		]
+	},
+	{
+		"name": "郑记奶茶",
+		"shopTag": 2,
+		"point": 4.5,
+		"count": 1000,
+		"time": 30,
+		"distance": 578,
+		"cost": 20,
+		"isZhuanSong": false,
+		"promotion": [
+			{
+				"type": "ling",
+				"text": "有机会领取商家代金券"
+			},
+			{
+				"type": "fan",
+				"text": "实际支付10元返10元商家代金券"
+			},
+			{
+				"type": "piao",
+				"text": "本店支持开发票，开票金额10元起"
+			}
+		]
+	}
+]

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MyIcon from "@/components/MyIcon";
+import axios from "axios";
 // import { connect } from "react-redux";
 // import { fetchCategoryData } from "../actions/categoryAction";
 import "./ContentList.scss";
@@ -12,18 +13,22 @@ import "./ContentList.scss";
 // @connect(state => ({
 //   categoryData: state.categoryReducer.categoryData
 // }))
-class Category extends Component {
+class ContentList extends Component {
   constructor(props) {
     super(props);
+    this.state = { shopList: [] };
   }
 
-  // componentDidMount() {
-  //   this.props.dispatch(fetchCategoryData());
-  // }
+  componentDidMount() {
+    // this.props.dispatch(fetchCategoryData());
+    axios("./json/shopList.json").then(res => {
+      this.setState({ shopList: res.data });
+    });
+  }
 
-  renderStar = point => {
+  renderStar = (point = 0) => {
     let starList = [];
-    const points = point.split(".");
+    const points = point.toString().split(".");
     let fullStarNum = Number(points[0]);
     let halfStarNum = Number(points[1]) >= 4 ? 1 : 0;
     let noStarNum = 5 - fullStarNum - halfStarNum;
@@ -40,46 +45,73 @@ class Category extends Component {
     return icon;
   };
 
-  renderList() {
-    let num = 1000;
+  renderShopTag = shopTag => {
+    const pinpai = <span className="shop-tag old">品牌</span>;
+    const xindao = <span className="shop-tag new">新到</span>;
+    switch (shopTag) {
+      case 0:
+        return pinpai;
+      case 1:
+        return xindao;
+      default:
+        return null;
+    }
+  };
+
+  renderPromotion = (promotion = []) => {
+    const tags = { piao: "票", ling: "领", fan: "返" };
+    return promotion.map((item, index) => {
+      const { type, text } = item;
+      return (
+        <div className="promotion" key={index.toString()}>
+          <span className={`promotion-tag ${type}`}>{tags[type]}</span>
+          <span>{text}</span>
+        </div>
+      );
+    });
+  };
+
+  renderList(data) {
+    let {
+      name,
+      shopTag,
+      point,
+      count,
+      time,
+      distance,
+      cost,
+      isZhuanSong,
+      promotion
+    } = data;
     return (
       <div className="shop-item scale-1px">
         <div className="shop-img">
-          {/* <span className="shop-tag old">品牌</span> */}
-          <span className="shop-tag new">新到</span>
-          <img src="https://via.placeholder.com/86x65/E1FFFF/808080" alt="" />
+          {this.renderShopTag(shopTag)}
+          <img
+            src={`https://via.placeholder.com/86x65/E1FFFF/808080?text=${name}`}
+            alt={name}
+          />
         </div>
         <div className="shop-info">
-          <h4 className="name">xx</h4>
+          <h4 className="name">{name}</h4>
           <div className="count info-detail">
             <div>
-              <span>{this.renderStar("4.5")}</span>
-              <span>&nbsp;&nbsp;月售{num > 999 ? "999+" : num}</span>
+              <span>{this.renderStar(point)}</span>
+              <span>&nbsp;&nbsp;月售{count > 999 ? "999+" : count}</span>
             </div>
             <div>
-              <span className="time">xx分钟 | </span>
-              <span className="distance">xxm</span>
+              <span className="time">{time}分钟 | </span>
+              <span className="distance">{distance}m</span>
             </div>
           </div>
           <div className="convey info-detail">
             <div>
-              <span className="cost">起送 ￥30 | </span>
-              <span className="time">xx</span>
+              <span className="cost">起送 ￥{cost} | </span>
+              <span className="time">{time}分钟</span>
             </div>
-            <div className="convey-tag">美团专送</div>
+            {isZhuanSong ? <div className="convey-tag">美团专送</div> : null}
           </div>
-          <div className="promotion">
-            <span className="promotion-tag piao">票</span>
-            <span>xx</span>
-          </div>
-          <div className="promotion">
-            <span className="promotion-tag ling">领</span>
-            <span>xx</span>
-          </div>
-          <div className="promotion">
-            <span className="promotion-tag fan">返</span>
-            <span>xx</span>
-          </div>
+          {this.renderPromotion(promotion)}
         </div>
       </div>
     );
@@ -93,10 +125,12 @@ class Category extends Component {
           附近商家
           <i />
         </h3>
-        <div className="shop-list">{this.renderList()}</div>
+        <div className="shop-list">
+          {this.state.shopList.map(item => this.renderList(item))}
+        </div>
       </div>
     );
   }
 }
 
-export default Category;
+export default ContentList;
