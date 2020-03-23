@@ -2,3 +2,18 @@
 	$rem: 37.5px; //以iphone6设计稿为准，自定义rem大小
 	@return ($px/$rem)+rem;
 }
+
+.scale-1px {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		transform: scaleY(0.5);
+		transform-origin: 0, 0;
+	}
+}

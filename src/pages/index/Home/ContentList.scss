@@ -1,6 +1,7 @@
 .shop {
 	background-color: #fff;
 	margin-top: px2rem(10px);
+	padding-bottom: px2rem(15px);
 
 	h3 {
 		font-size: px2rem(18px);
@@ -18,4 +19,46 @@
 
 		}
 	}
+
+	.shop-list {
+		padding: 0 px2rem(10px);
+		color: #656565;
+		font-size: px2rem(12px);
+
+		.shop-item {
+			display: flex;
+			padding: px2rem(15px) 0;
+
+			&::after {
+				background-color: $border-color;
+			}
+
+			.shop-img {
+				.shop-tag {
+					position: absolute;
+				}
+
+				img {
+					border: 1px solid $border-color;
+				}
+			}
+
+			.shop-info {
+				flex: 1;
+				margin-left: px2rem(7px);
+
+				.name {
+					font-size: px2rem(16px);
+					font-weight: normal;
+					color: #333;
+				}
+
+				.info-detail {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+
 }
