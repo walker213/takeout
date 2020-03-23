@@ -1,4 +1,4 @@
-const iconFontUrl = "//at.alicdn.com/t/font_1679658_q8cizdy26l.js";
+const iconFontUrl = "//at.alicdn.com/t/font_1679658_6oe9phigd4x.js";
 const bottomTabs = [
   { name: "首页", key: "home", icon: "home" },
   { name: "订单", key: "order", icon: "order" },

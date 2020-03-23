@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import MyIcon from "@/components/MyIcon";
+import MyIcon from "@/components/MyIcon";
 // import { connect } from "react-redux";
 // import { fetchCategoryData } from "../actions/categoryAction";
 import "./ContentList.scss";
@@ -21,7 +21,27 @@ class Category extends Component {
   //   this.props.dispatch(fetchCategoryData());
   // }
 
+  renderStar = point => {
+    let starList = [];
+    const points = point.split(".");
+    let fullStarNum = Number(points[0]);
+    let halfStarNum = Number(points[1]) >= 4 ? 1 : 0;
+    let noStarNum = 5 - fullStarNum - halfStarNum;
+    for (let i = 0; i < fullStarNum; i++) {
+      starList.push("starFull");
+    }
+    if (halfStarNum) starList.push("starHalf");
+    for (let i = 0; i < noStarNum; i++) {
+      starList.push("starNo");
+    }
+    const icon = starList.map((item, index) => (
+      <MyIcon type={item} key={index.toString()} />
+    ));
+    return icon;
+  };
+
   renderList() {
+    let num = 1000;
     return (
       <div className="shop-item scale-1px">
         <div className="shop-img">
@@ -33,8 +53,8 @@ class Category extends Component {
           <h4 className="name">xx</h4>
           <div className="count info-detail">
             <div>
-              <span>star </span>
-              <span>月售</span>
+              <span>{this.renderStar("4.5")}</span>
+              <span>&nbsp;&nbsp;月售{num > 999 ? "999+" : num}</span>
             </div>
             <div>
               <span className="time">xx分钟 | </span>
