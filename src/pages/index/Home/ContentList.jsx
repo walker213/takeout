@@ -25,8 +25,9 @@ class Category extends Component {
     return (
       <div className="shop-item scale-1px">
         <div className="shop-img">
-          <span className="shop-tag">xx</span>
-          <img src="https://via.placeholder.com/86x65/FFFF00/808080" alt="" />
+          {/* <span className="shop-tag old">品牌</span> */}
+          <span className="shop-tag new">新到</span>
+          <img src="https://via.placeholder.com/86x65/E1FFFF/808080" alt="" />
         </div>
         <div className="shop-info">
           <h4 className="name">xx</h4>
@@ -48,7 +49,15 @@ class Category extends Component {
             <div className="convey-tag">美团专送</div>
           </div>
           <div className="promotion">
+            <span className="promotion-tag piao">票</span>
             <span>xx</span>
+          </div>
+          <div className="promotion">
+            <span className="promotion-tag ling">领</span>
+            <span>xx</span>
+          </div>
+          <div className="promotion">
+            <span className="promotion-tag fan">返</span>
             <span>xx</span>
           </div>
         </div>
