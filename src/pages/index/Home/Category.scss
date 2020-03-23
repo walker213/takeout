@@ -5,10 +5,13 @@ $iconSize: px2rem(56px);
   justify-content: space-around;
   flex-wrap: wrap;
   font-size: 14px;
+  background-color: #fff;
+
   .category-item {
     width: 25%;
     padding: 5%;
     text-align: center;
+
     .category-icon {
       width: $iconSize;
       height: $iconSize;

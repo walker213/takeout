@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Category from "./Category";
+import ContentList from "./ContentList";
 
 /*
  * @construcotr <Home />
@@ -17,6 +18,7 @@ export default class Home extends Component {
       <div>
         <Header />
         <Category />
+        <ContentList />
       </div>
     );
   }
