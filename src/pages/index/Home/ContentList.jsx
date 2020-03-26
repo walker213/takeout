@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import MyIcon from "@/components/MyIcon";
-import axios from "axios";
-// import { connect } from "react-redux";
-// import { fetchCategoryData } from "../actions/categoryAction";
+import { connect } from "react-redux";
+import { fetchShopList } from "../actions/shopListAction";
 import "./ContentList.scss";
 
 /*
@@ -10,20 +9,16 @@ import "./ContentList.scss";
  * @description 类别
  */
 
-// @connect(state => ({
-//   categoryData: state.categoryReducer.categoryData
-// }))
+@connect(state => ({
+  shopList: state.shopListReducer.shopList
+}))
 class ContentList extends Component {
   constructor(props) {
     super(props);
-    this.state = { shopList: [] };
   }
 
   componentDidMount() {
-    // this.props.dispatch(fetchCategoryData());
-    axios("./json/shopList.json").then(res => {
-      this.setState({ shopList: res.data });
-    });
+    this.props.dispatch(fetchShopList());
   }
 
   renderStar = (point = 0) => {
@@ -71,7 +66,7 @@ class ContentList extends Component {
     });
   };
 
-  renderList(data) {
+  renderList = (item, index) => {
     let {
       name,
       shopTag,
@@ -82,9 +77,9 @@ class ContentList extends Component {
       cost,
       isZhuanSong,
       promotion
-    } = data;
+    } = item;
     return (
-      <div className="shop-item scale-1px">
+      <div className="shop-item scale-1px" key={index.toString()}>
         <div className="shop-img">
           {this.renderShopTag(shopTag)}
           <img
@@ -115,9 +110,10 @@ class ContentList extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   render() {
+    const { shopList } = this.props;
     return (
       <div className="shop">
         <h3>
@@ -125,9 +121,7 @@ class ContentList extends Component {
           附近商家
           <i />
         </h3>
-        <div className="shop-list">
-          {this.state.shopList.map(item => this.renderList(item))}
-        </div>
+        <div className="shop-list">{shopList.map(this.renderList)}</div>
       </div>
     );
   }
