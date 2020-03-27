@@ -53,6 +53,11 @@ class ContentList extends Component {
     }
   };
 
+  renderDistance = meter => {
+    if (meter < 1000) return meter + "m";
+    return Math.round(meter / 100) / 10 + "km";
+  };
+
   renderPromotion = (promotion = []) => {
     const tags = { piao: "票", ling: "领", fan: "返" };
     return promotion.map((item, index) => {
@@ -96,7 +101,7 @@ class ContentList extends Component {
             </div>
             <div>
               <span className="time">{time}分钟 | </span>
-              <span className="distance">{distance}m</span>
+              <span className="distance">{this.renderDistance(distance)}</span>
             </div>
           </div>
           <div className="convey info-detail">
