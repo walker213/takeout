@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MyIcon from "@/components/MyIcon";
 import { connect } from "react-redux";
+import { throttle } from "@/helper/utils";
 import { fetchShopList } from "../actions/shopListAction";
 import "./ContentList.scss";
 
@@ -16,17 +17,18 @@ import "./ContentList.scss";
 class ContentList extends Component {
   constructor(props) {
     super(props);
+    this.onLoadPageWithThrottle = throttle(this.onLoadPage.bind(this), 500);
     this.state = {
       page: 0
     };
   }
 
   UNSAFE_componentWillMount() {
-    window.addEventListener("scroll", this.onLoadPage.bind(this));
+    window.addEventListener("scroll", this.onLoadPageWithThrottle);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.onLoadPage.bind(this));
+    window.removeEventListener("scroll", this.onLoadPageWithThrottle);
   }
 
   componentDidMount() {
@@ -41,14 +43,15 @@ class ContentList extends Component {
     const scrollTop = html.scrollTop;
     const scrollHeight = body.scrollHeight;
     const preLoadDis = 50;
-    // const { page } = this.state;
+    const { page } = this.state;
+    if (page >= 3) return;
     if (clientHeight + scrollTop >= scrollHeight - preLoadDis) {
+      const nextPage = page + 1;
       this.setState(
-        prevState => ({
-          ...prevState,
-          page: ++prevState.page
-        }),
-        () => this.props.dispatch(fetchShopList(this.state.page))
+        {
+          page: nextPage
+        },
+        () => this.props.dispatch(fetchShopList(nextPage))
       );
     }
   }
