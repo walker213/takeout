@@ -16,10 +16,41 @@ import "./ContentList.scss";
 class ContentList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      page: 0
+    };
+  }
+
+  UNSAFE_componentWillMount() {
+    window.addEventListener("scroll", this.onLoadPage.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onLoadPage.bind(this));
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchShopList());
+    this.props.dispatch(fetchShopList(this.state.page));
+  }
+
+  onLoadPage() {
+    console.log("heihei");
+    const html = document.documentElement;
+    const body = document.body;
+    const clientHeight = html.clientHeight;
+    const scrollTop = html.scrollTop;
+    const scrollHeight = body.scrollHeight;
+    const preLoadDis = 50;
+    // const { page } = this.state;
+    if (clientHeight + scrollTop >= scrollHeight - preLoadDis) {
+      this.setState(
+        prevState => ({
+          ...prevState,
+          page: ++prevState.page
+        }),
+        () => this.props.dispatch(fetchShopList(this.state.page))
+      );
+    }
   }
 
   renderStar = (point = 0) => {
@@ -128,7 +159,8 @@ class ContentList extends Component {
           <i />
         </h3>
         <div className="shop-list">
-          {isLoading ? "loading" : shopList.map(this.renderList)}
+          {shopList.map(this.renderList)}
+          {isLoading ? "loading" : null}
         </div>
       </div>
     );

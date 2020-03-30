@@ -4,7 +4,7 @@ const initState = { shopList: [] };
 const shopListReducer = (state = initState, action) => {
   switch (action.type) {
     case SHOP_LIST:
-      return { shopList: action.data };
+      return { shopList: [...state.shopList, ...action.data] };
     default:
       return state;
   }
