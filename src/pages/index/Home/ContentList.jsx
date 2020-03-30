@@ -10,7 +10,8 @@ import "./ContentList.scss";
  */
 
 @connect(state => ({
-  shopList: state.shopListReducer.shopList
+  shopList: state.shopListReducer.shopList,
+  isLoading: state.commonReducer.loading
 }))
 class ContentList extends Component {
   constructor(props) {
@@ -118,7 +119,7 @@ class ContentList extends Component {
   };
 
   render() {
-    const { shopList } = this.props;
+    const { shopList, isLoading } = this.props;
     return (
       <div className="shop">
         <h3>
@@ -126,7 +127,9 @@ class ContentList extends Component {
           附近商家
           <i />
         </h3>
-        <div className="shop-list">{shopList.map(this.renderList)}</div>
+        <div className="shop-list">
+          {isLoading ? "loading" : shopList.map(this.renderList)}
+        </div>
       </div>
     );
   }
