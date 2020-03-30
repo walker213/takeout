@@ -1,7 +1,7 @@
 .shop {
 	background-color: #fff;
 	margin-top: px2rem(10px);
-	padding-bottom: px2rem(15px);
+	padding-bottom: px2rem(80px);
 
 	h3 {
 		font-size: px2rem(18px);
@@ -33,6 +33,10 @@
 				background-color: $border-color;
 			}
 
+			&:last-child::after {
+				background-color: transparent;
+			}
+
 			.shop-img {
 				.shop-tag {
 					position: absolute;
@@ -50,6 +54,8 @@
 				}
 
 				img {
+					width: px2rem(86px);
+					height: px2rem(65px);
 					border: 1px solid $border-color;
 				}
 			}
