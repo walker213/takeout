@@ -36,15 +36,14 @@ class ContentList extends Component {
   }
 
   onLoadPage() {
-    console.log("heihei");
+    const { page } = this.state;
+    if (page >= 3) return;
     const html = document.documentElement;
     const body = document.body;
     const clientHeight = html.clientHeight;
     const scrollTop = html.scrollTop;
     const scrollHeight = body.scrollHeight;
     const preLoadDis = 50;
-    const { page } = this.state;
-    if (page >= 3) return;
     if (clientHeight + scrollTop >= scrollHeight - preLoadDis) {
       const nextPage = page + 1;
       this.setState(
@@ -154,6 +153,7 @@ class ContentList extends Component {
 
   render() {
     const { shopList, isLoading } = this.props;
+    const { page } = this.state;
     return (
       <div className="shop">
         <h3>
@@ -163,7 +163,10 @@ class ContentList extends Component {
         </h3>
         <div className="shop-list">
           {shopList.map(this.renderList)}
-          {isLoading ? "loading" : null}
+          <div className="bottom-text">
+            {isLoading ? "loading" : null}
+            {!isLoading && page >= 3 ? "———— 我是有底线的 ————" : null}
+          </div>
         </div>
       </div>
     );
