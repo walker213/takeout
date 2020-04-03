@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchOrderData } from "../actions/orderAction";
 import "./index.scss";
 
 /*
@@ -6,14 +8,14 @@ import "./index.scss";
  * @description 订单tab
  */
 
-// @connect(state => ({
-//   shopList: state.shopListReducer.shopList,
-//   isLoading: state.commonReducer.loading
-// }))
+@connect(state => ({
+  list: state.orderReducer.list,
+  isLoading: state.commonReducer.loading
+}))
 class Order extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  componentDidMount() {
+    this.props.dispatch(fetchOrderData());
+  }
 
   render() {
     return (

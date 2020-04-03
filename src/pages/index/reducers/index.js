@@ -3,6 +3,7 @@ import { LOADING } from "../actions/types";
 import tabReducer from "./tabReducer";
 import categoryReducer from "./categoryReducer";
 import shopListReducer from "./shopListReducer";
+import orderReducer from "./orderReducer";
 
 const commonInitState = {
   loading: false
@@ -20,7 +21,8 @@ const reducers = combineReducers({
   commonReducer,
   tabReducer,
   categoryReducer,
-  shopListReducer
+  shopListReducer,
+  orderReducer
 });
 
 export default reducers;
