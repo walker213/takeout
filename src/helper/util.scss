@@ -1,19 +1,33 @@
 @function px2rem($px) {
-	$rem: 37.5px; //以iphone6设计稿为准，自定义rem大小
-	@return ($px/$rem)+rem;
+  $rem: 37.5px; //以iphone6设计稿为准，自定义rem大小
+  @return ($px/$rem) + rem;
 }
 
 .scale-1px {
-	position: relative;
+  position: relative;
 
-	&::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 1px;
-		transform: scaleY(0.5);
-		transform-origin: 0, 0;
-	}
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    transform: scaleY(0.5);
+    transform-origin: 0, 0;
+  }
+}
+
+.one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }

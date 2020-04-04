@@ -1,125 +1,122 @@
 .shop {
-	background-color: #fff;
-	margin-top: px2rem(10px);
-	padding-bottom: px2rem(60px);
+  background-color: #fff;
+  margin-top: px2rem(10px);
 
-	h3 {
-		font-size: px2rem(18px);
-		font-weight: normal;
-		text-align: center;
-		padding: 10px 0;
+  h3 {
+    font-size: px2rem(18px);
+    font-weight: normal;
+    text-align: center;
+    padding: 10px 0;
 
-		i {
-			display: inline-block;
-			width: px2rem(40px);
-			height: 0;
-			margin: 0 5px;
-			border-bottom: 1px solid #ccc;
-			vertical-align: middle;
+    i {
+      display: inline-block;
+      width: px2rem(40px);
+      height: 0;
+      margin: 0 5px;
+      border-bottom: 1px solid #ccc;
+      vertical-align: middle;
+    }
+  }
 
-		}
-	}
+  .shop-list {
+    padding: 0 px2rem(10px);
+    color: #656565;
+    font-size: px2rem(12px);
 
-	.shop-list {
-		padding: 0 px2rem(10px);
-		color: #656565;
-		font-size: px2rem(12px);
+    .shop-item {
+      display: flex;
+      padding: px2rem(15px) 0 px2rem(30px);
 
-		.shop-item {
-			display: flex;
-			padding: px2rem(15px) 0 px2rem(30px);
+      &::after {
+        background-color: $border-color;
+      }
 
-			&::after {
-				background-color: $border-color;
-			}
+      &:last-child::after {
+        background-color: transparent;
+      }
 
-			&:last-child::after {
-				background-color: transparent;
-			}
+      .shop-img {
+        .shop-tag {
+          position: absolute;
+          line-height: px2rem(12px);
+          padding: px2rem(2px);
+          color: #fff;
 
-			.shop-img {
-				.shop-tag {
-					position: absolute;
-					line-height: px2rem(12px);
-					padding: px2rem(2px);
-					color: #fff;
+          &.old {
+            background-color: rgb(221, 163, 82);
+          }
 
-					&.old {
-						background-color: rgb(221, 163, 82);
-					}
+          &.new {
+            background-color: rgb(58, 198, 111);
+          }
+        }
 
-					&.new {
-						background-color: rgb(58, 198, 111);
-					}
-				}
+        img {
+          width: px2rem(86px);
+          height: px2rem(65px);
+          border: 1px solid $border-color;
+        }
+      }
 
-				img {
-					width: px2rem(86px);
-					height: px2rem(65px);
-					border: 1px solid $border-color;
-				}
-			}
+      .shop-info {
+        flex: 1;
+        margin-left: px2rem(7px);
 
-			.shop-info {
-				flex: 1;
-				margin-left: px2rem(7px);
+        .name {
+          font-size: px2rem(16px);
+          font-weight: normal;
+          color: #333;
+        }
 
-				.name {
-					font-size: px2rem(16px);
-					font-weight: normal;
-					color: #333;
-				}
+        .info-detail {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: px2rem(5px);
+        }
 
-				.info-detail {
-					display: flex;
-					justify-content: space-between;
-					margin-bottom: px2rem(5px);
-				}
+        .convey {
+          .convey-tag {
+            padding: px2rem(1px) px2rem(3px);
+            background-color: $primary-color;
+            color: #333;
+            font-weight: 600;
+          }
+        }
 
-				.convey {
-					.convey-tag {
-						padding: px2rem(1px) px2rem(3px);
-						background-color: $primary-color;
-						color: #333;
-						font-weight: 600;
-					}
-				}
+        .promotion {
+          margin-top: px2rem(5px);
 
-				.promotion {
-					margin-top: px2rem(5px);
+          &-tag {
+            display: inline-block;
+            margin-right: px2rem(3px);
+            width: px2rem(14px);
+            height: px2rem(14px);
+            line-height: px2rem(14px);
+            text-align: center;
+            font-size: px2rem(10px);
 
-					&-tag {
-						display: inline-block;
-						margin-right: px2rem(3px);
-						width: px2rem(14px);
-						height: px2rem(14px);
-						line-height: px2rem(14px);
-						text-align: center;
-						font-size: px2rem(10px);
+            &.piao {
+              border: 1px solid rgb(126, 155, 211);
+              color: rgb(126, 155, 211);
+            }
 
-						&.piao {
-							border: 1px solid rgb(126, 155, 211);
-							color: rgb(126, 155, 211);
-						}
+            &.ling {
+              background-color: rgb(234, 96, 147);
+              color: #fff;
+            }
 
-						&.ling {
-							background-color: rgb(234, 96, 147);
-							color: #fff;
-						}
+            &.fan {
+              background-color: rgb(231, 41, 69);
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
 
-						&.fan {
-							background-color: rgb(231, 41, 69);
-							color: #fff;
-						}
-					}
-				}
-			}
-		}
-
-		.bottom-text {
-			padding: 10px 0;
-			text-align: center;
-		}
-	}
-
+    .bottom-text {
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
 }

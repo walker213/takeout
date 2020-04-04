@@ -13,27 +13,32 @@ export default class ListItem extends Component {
     return (
       <div className="order-item">
         <div className="order-detail">
-          <img src="" alt="" className="order-img" />
+          <img
+            src={`https://via.placeholder.com/40x40/E1FFFF/808080?text=${name}`}
+            alt={name}
+            className="order-img"
+          />
           <div className="order-info">
             <div className="item-top">
-              <p>{name}</p>
+              <p className="one-line">{name}</p>
               <MyIcon type="jiantou1" />
               <span>{status}</span>
             </div>
             <div className="item-bottom">
               {foodList.slice(0, 2).map((item, index) => (
-                <div className="food-item" key={index.toString()}>
+                <div className="fo od-item" key={index.toString()}>
                   <span>{item.name}</span>
                   <span>x{item.num}</span>
                 </div>
               ))}
               <div className="food-cost">
-                总计{foodList.length}个菜，实付<strong>￥{cost}</strong>
+                <span>...</span>总计{foodList.length}个菜，实付
+                <strong>￥{cost}</strong>
               </div>
             </div>
           </div>
         </div>
-        <div className="order-btn">
+        <div className="order-btn clearfix">
           <button>评价</button>
         </div>
       </div>
