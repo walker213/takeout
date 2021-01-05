@@ -57,7 +57,7 @@
   "repository": "https://github.com/walker213/takeout.git",
   "dependencies": {
     "@ant-design/icons": "^4.0.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
